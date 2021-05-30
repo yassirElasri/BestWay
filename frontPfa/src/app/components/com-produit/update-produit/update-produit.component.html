@@ -1,0 +1,42 @@
+<p>ajouter-produit-com works!</p>
+<form [formGroup]="updateForm" (ngSubmit)="updateFinal()" enctype="multipart/form-data">
+  
+    <div class="form-group">
+        <label class="center-block">Nom:
+          <input class="form-control" formControlName="nom">
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Description:
+          <input class="form-control" formControlName="description">
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Prix:
+          <input class="form-control" formControlName="prix">
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Quantite:
+          <input class="form-control" formControlName="quantite">
+        </label>
+      </div>
+      
+      
+      <input type="file" accept="image/*" (change)="onSelectFile($event)" name="file">
+      <img [src]="imgUrl" height="200" *ngIf="imgUrl">
+      <div class="form-group">
+        <label class="center-block">Categorie: 
+            <select formControlName="categorie_id" id="pet-select">
+              <input class="form-control" type="hidden" >
+                <option   *ngFor="let cat of listCat" value={{cat.id}} >{{cat.nom}}</option>
+               
+            </select>
+        </label>
+      </div>
+      <a><img src="{{'http://127.0.0.1:8080/produit/getImage/'+id}}" height="10px" width="10px"></a>
+
+      <input type="submit" class="btn btn-success" value="Ajouter">
+   
+</form>
+
